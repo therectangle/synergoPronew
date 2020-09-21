@@ -31,6 +31,27 @@ export class SelfAssessmentOfficeComponent implements OnInit {
   LOWSCORECOUNT: number = 3;
   isDownloading: boolean = false;
 
+
+ @ViewChild("sectionQuestion1") SectionQues1: ElementRef;
+ @ViewChild("sectionQuestion2") SectionQues2: ElementRef;
+ @ViewChild("sectionQuestion3") SectionQues3: ElementRef;
+ @ViewChild("sectionQuestion4") SectionQues4: ElementRef;
+ @ViewChild("sectionQuestion5") SectionQues5: ElementRef;
+ @ViewChild("sectionQuestion6") SectionQues6: ElementRef;
+ @ViewChild("sectionQuestion7") SectionQues7: ElementRef;
+ @ViewChild("sectionQuestion8") SectionQues8: ElementRef;
+ @ViewChild("sectionQuestion9") SectionQues9: ElementRef;
+ @ViewChild("sectionQuestion10") SectionQues10: ElementRef;
+ @ViewChild("sectionQuestion11") SectionQues11: ElementRef;
+ @ViewChild("sectionQuestion12") SectionQues12: ElementRef;
+ @ViewChild("sectionQuestion13") SectionQues13: ElementRef;
+ @ViewChild("sectionQuestion14") SectionQues14: ElementRef;
+ @ViewChild("sectionQuestion15") SectionQues15: ElementRef;
+ @ViewChild("sectionQuestion16") SectionQues16: ElementRef;
+
+
+
+
   selfAssessmentOfficeDTO: SelfAssessmentOfficeDTO;
   selfAssessmentList: SelfAssessment[];
   @ViewChild('content') content: ElementRef;
@@ -224,6 +245,7 @@ export class SelfAssessmentOfficeComponent implements OnInit {
   questionNo16ForEOptionsDivSectionToDisplay: boolean = false;
   questionNo16ForFOptionsDivSectionToDisplay: boolean = false;
   isFinalError: boolean;
+  errorFound: boolean;
 
 
   constructor(private storage: AngularFireStorage,
@@ -844,6 +866,37 @@ export class SelfAssessmentOfficeComponent implements OnInit {
   question2ValidationSuccess: boolean = false;
   question2OptionsValidationSuccess: boolean = false;
   changeQuestion2OptionsArrayFormGroup(index, event) {
+  console.log("selected",this.getQuestion2OptionsArrayFormGroup(index).value.selected);
+  if(!this.getQuestion2OptionsArrayFormGroup(index).value.selected){
+  //       console.log(this.question2OptionsArrayFormGroup.controls[index].value.name + " Selected");
+//this.question2OptionsArrayFormGroup.controls[index].value.name='';
+console.log("index",index);
+if(index==0){
+  var radio = document.querySelector('input[type=radio][name=option210]:checked');
+  radio.checked = false;
+  }
+  if(index==1){
+  var radio = document.querySelector('input[type=radio][name=option221]:checked');
+  radio.checked = false;
+  }
+  if(index==2){
+  var radio = document.querySelector('input[type=radio][name=option232]:checked');
+  radio.checked = false;
+  }
+  if(index==3){
+  var radio = document.querySelector('input[type=radio][name=option243]:checked');
+  radio.checked = false;
+  }
+  if(index==4){
+  var radio = document.querySelector('input[type=radio][name=option254]:checked');
+  radio.checked = false;
+  }
+  if(index==5){
+  var radio = document.querySelector('input[type=radio][name=option265]:checked');
+  radio.checked = false;
+  }
+
+  }
     this.question2ValidationSuccess = false;
     this.question2OptionsValidationSuccess = false;
     for (let ii = 0; ii < this.selfAssessment.question2OptionsArray.length; ii++) {
@@ -3259,16 +3312,22 @@ console.log("Index="+index+" controlname="+controlname+" "+isChildControlSelecte
 
 
   submittedForReport(): void {
-    this.isSubmittedForReport = true;
+   // this.isSubmittedForReport = true;
     var count = 0;
-    this.isFinalError = false;
+    //this.isFinalError = false;
+    this.errorFound=false;
 
 
 
     if (!this.question1ValidationSuccess) {
-
       this.validationPopupDisplay = true;
       this.isFinalError = true;
+      console.log("this.errorFound 1",this.errorFound);
+     //  this.question1Found.nativeElement.focus();
+      
+      this.SectionQues1.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+     this.errorFound=true;
       console.log(1);
     }
     else {
@@ -3277,126 +3336,212 @@ console.log("Index="+index+" controlname="+controlname+" "+isChildControlSelecte
 
     if (!this.question2ValidationSuccess) {
 
-      this.validationPopupDisplay = true;
       this.isFinalError = true;
+      console.log("this.errorFound 2",this.errorFound);
+      if(!this.errorFound){
+       this.SectionQues2.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+       //this.question2Found.nativeElement.focus();
+     this.errorFound=true;
+      this.validationPopupDisplay = true;
+
+      }
       console.log(2);
+      console.log("helllooo");
+
     } else {
       this.question2ValidationSuccess = true;
     }
 
     if (!this.question3ValidationSuccess) {
 
-      this.validationPopupDisplay = true;
+      console.log("this.errorFound 3",this.errorFound);
+     
       //this.question3ValidationSuccess = true;
       this.isFinalError = true;
       console.log(3);
+      if(!this.errorFound){
+      this.SectionQues3.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // this.question3Found.nativeElement.focus();
+     this.errorFound=true;
+      this.validationPopupDisplay = true;
+
+      }
     } else {
       this.question3ValidationSuccess = true;
     }
 
     if (!this.question4ValidationSuccess) {
+      console.log("this.errorFound 4",this.errorFound);
 
-      this.validationPopupDisplay = true;
+
       this.isFinalError = true;
       console.log(4);
+      if(!this.errorFound){
+       this.SectionQues4.nativeElement.scrollIntoView();
+      this.errorFound=true;
+      this.validationPopupDisplay = true;
+     
+      }
     } else {
       this.question4ValidationSuccess = true;
     }
 
     if (!this.question5ValidationSuccess) {
-
-      this.validationPopupDisplay = true;
       this.isFinalError = true;
+     
+      console.log("this.errorFound 5",this.errorFound);
+    if(!this.errorFound){
+   this.validationPopupDisplay = true;
+
+       this.SectionQues5.nativeElement.scrollIntoView();
+      this.errorFound=true;
       console.log(5);
+   
+      }
+
+      
     } else {
       this.question5ValidationSuccess = true;
     }
 
     if (!this.question6ValidationSuccess) {
+      console.log("this.errorFound 6",this.errorFound);
 
-      this.validationPopupDisplay = true;
+
       this.isFinalError = true;
+      if(!this.errorFound){
+      this.validationPopupDisplay = true;
+       this.SectionQues6.nativeElement.scrollIntoView();
+      
+      // document.getElementById("#section-question6").scrollIntoView({ behavior: 'smooth', block: 'center' });
+      this.errorFound=true;
       console.log(6);
+
+      }
     } else {
       this.question6ValidationSuccess = true;
     }
 
     if (!this.question7ValidationSuccess) {
+      console.log("this.errorFound 7",this.errorFound);
 
-      this.validationPopupDisplay = true;
+
       this.isFinalError = true;
+      if(!this.errorFound){
+      this.validationPopupDisplay = true;
+    
+      this.SectionQues7.nativeElement.scrollIntoView();
+      this.errorFound=true;
       console.log(7);
+
+      }
     } else {
       this.question7ValidationSuccess = true;
     }
 
     if (!this.question8ValidationSuccess) {
+      console.log("this.errorFound 8",this.errorFound);
 
-      this.validationPopupDisplay = true;
+
+      //this.validationPopupDisplay = true;
       this.isFinalError = true;
+      if(!this.errorFound){
+      this.SectionQues8.nativeElement.scrollIntoView();
+      this.errorFound=true;
       console.log(8);
+      }
     } else {
       this.question8ValidationSuccess = true;
     }
 
     if (this.question9ToDisplay && !this.question9ValidationSuccess) {
 
-      this.validationPopupDisplay = true;
+      //this.validationPopupDisplay = true;
       this.isFinalError = true;
+      if(!this.errorFound){
+      this.SectionQues9.nativeElement.scrollIntoView();
+      this.errorFound=true;
       console.log(9);
+      }
     } else {
       this.question9ValidationSuccess = true;
     }
 
     if (this.question10ToDisplay && !this.question10ValidationSuccess) {
 
-      this.validationPopupDisplay = true;
+      //this.validationPopupDisplay = true;
       this.isFinalError = true;
+      if(!this.errorFound){
+      this.SectionQues10.nativeElement.scrollIntoView();
+      this.errorFound=true;
       console.log(10);
+      }
     } else {
       this.question10ValidationSuccess = true;
     }
 
     if (this.question11ToDisplay && !this.question11ValidationSuccess) {
 
-      this.validationPopupDisplay = true;
+      //this.validationPopupDisplay = true;
       this.isFinalError = true;
       console.log(11);
+      if(!this.errorFound){
+     this.SectionQues11.nativeElement.scrollIntoView();
+      this.errorFound=true;
+      console.log(11);
+      }
     } else {
       this.question11ValidationSuccess = true;
     }
     if (this.question12ToDisplay && !this.question12ValidationSuccess) {
 
-      this.validationPopupDisplay = true;
+      //this.validationPopupDisplay = true;
       this.isFinalError = true;
+      if(!this.errorFound){
+      this.SectionQues12.nativeElement.scrollIntoView();
+      this.errorFound=true;
       console.log(12);
+      }
     } else {
       this.question12ValidationSuccess = true;
     }
 
     if (!this.question13ValidationSuccess) {
 
-      this.validationPopupDisplay = true;
+      //this.validationPopupDisplay = true;
       this.isFinalError = true;
+      if(!this.errorFound){
+      this.SectionQues13.nativeElement.scrollIntoView();
+      this.errorFound=true;
       console.log(13);
+      }
     } else {
       this.question13ValidationSuccess = true;
     }
 
     if (!this.question14ValidationSuccess) {
 
-      this.validationPopupDisplay = true;
+      //this.validationPopupDisplay = true;
       this.isFinalError = true;
+      if(!this.errorFound){
+      this.SectionQues14.nativeElement.scrollIntoView();
+      this.errorFound=true;
       console.log(14);
+      }
     } else {
       this.question14ValidationSuccess = true;
     }
 
     if (!this.question15ValidationSuccess) {
 
-      this.validationPopupDisplay = true;
+      //this.validationPopupDisplay = true;
       this.isFinalError = true;
+      if(!this.errorFound){
+      this.SectionQues15.nativeElement.scrollIntoView();
+      this.errorFound=true;
       console.log(15);
+      }
     }
     else {
       this.question15ValidationSuccess = true;
@@ -3404,17 +3549,25 @@ console.log("Index="+index+" controlname="+controlname+" "+isChildControlSelecte
 
     if (!this.question16OptionsValidationSuccess) {
 
-      this.validationPopupDisplay = true;
+      //this.validationPopupDisplay = true;
       this.isFinalError = true;
-      console.log(161);
+      if(!this.errorFound){
+      this.SectionQues16.nativeElement.scrollIntoView();
+      this.errorFound=true;
+      console.log(16);
+      }
     } else {
       this.question16OptionsValidationSuccess = true;
     }
 
     if (!this.question16ValidationSuccess) {
 
-      this.validationPopupDisplay = true;
+      //this.validationPopupDisplay = true;
       this.isFinalError = true;
+      if(!this.errorFound){
+      document.querySelector('#section-question16').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      this.errorFound=true;
+      }
       console.log(17);
     } else {
       this.question16ValidationSuccess = true;
@@ -3425,7 +3578,7 @@ console.log("Index="+index+" controlname="+controlname+" "+isChildControlSelecte
     if (!this.isFinalError) {
       this.isFinalError = false;
       this.isSubmittedForReport = true;
-      this.validationPopupDisplay = false;
+      //this.validationPopupDisplay = false;
 
       console.log(this.selfAssessmentForm.value);
       /*this.selfAssessment=JSON.parse(this.selfAssessmentForm.value);
@@ -3435,7 +3588,7 @@ console.log("Index="+index+" controlname="+controlname+" "+isChildControlSelecte
       let data = Object.assign({}, this.selfAssessment);
     this.firestore.collection('self-assessment-office-data').add(data);*/
       console.log(this.selfAssessment);
-      window.scroll(0, 0);
+     // window.scroll(0, 0);
       this.storeFormdataForReport();
       this.typeSectionHeadingToDisplay();
       this.checkHighMeterCount();

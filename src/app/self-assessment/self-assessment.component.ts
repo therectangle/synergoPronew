@@ -56,6 +56,26 @@ export class SelfAssessmentComponent implements OnInit {
   fileUrl;
   firebaseUserModel: FirebaseUserModel;
 
+ @ViewChild("sectionHomeQuestion1") SectionHomeQues1: ElementRef;
+ @ViewChild("sectionHomeQuestion2") SectionHomeQues2: ElementRef;
+ @ViewChild("sectionHomeQuestion3") SectionHomeQues3: ElementRef;
+ @ViewChild("sectionHomeQuestion4") SectionHomeQues4: ElementRef;
+ @ViewChild("sectionHomeQuestion5") SectionHomeQues5: ElementRef;
+ @ViewChild("sectionHomeQuestion6") SectionHomeQues6: ElementRef;
+ @ViewChild("sectionHomeQuestion7") SectionHomeQues7: ElementRef;
+ @ViewChild("sectionHomeQuestion8") SectionHomeQues8: ElementRef;
+ @ViewChild("sectionHomeQuestion9") SectionHomeQues9: ElementRef;
+ @ViewChild("sectionHomeQuestion10") SectionHomeQues10: ElementRef;
+ @ViewChild("sectionHomeQuestion11") SectionHomeQues11: ElementRef;
+ @ViewChild("sectionHomeQuestion12") SectionHomeQues12: ElementRef;
+ @ViewChild("sectionHomeQuestion13") SectionHomeQues13: ElementRef;
+ @ViewChild("sectionHomeQuestion14") SectionHomeQues14: ElementRef;
+ @ViewChild("sectionHomeQuestion15") SectionHomeQues15: ElementRef;
+ @ViewChild("sectionHomeQuestion16") SectionHomeQues16: ElementRef;
+
+
+  errorFound: boolean =false;
+
 
   //to Show error Highlight Box Over Each Questions
   question1Error: boolean = false;
@@ -475,6 +495,8 @@ export class SelfAssessmentComponent implements OnInit {
       this.selfAssessment.paperWork1=null;
     }
     
+    this.errorFound=false;
+
 
     this.question1Error = false;
     this.question2Error = false;
@@ -486,6 +508,7 @@ export class SelfAssessmentComponent implements OnInit {
     this.question8Error = false;
     this.question9Error = false;
 
+
     var isFinalError = false;
     if ((this.selfAssessment.laptop1 == '')
       && (this.selfAssessment.computer1 == '')
@@ -494,6 +517,9 @@ export class SelfAssessmentComponent implements OnInit {
       this.validationPopupDisplay = true;
       this.question1Error = true;
       isFinalError = true;
+      this.SectionHomeQues1.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      this.errorFound=true;
+
     }
     if ((this.selfAssessment.laptop1Group == '')
       && (this.selfAssessment.computer1Group == '')
@@ -502,6 +528,10 @@ export class SelfAssessmentComponent implements OnInit {
       this.validationPopupDisplay = true;
       this.question1Error = true;
       isFinalError = true;
+      if(!this.errorFound){
+      this.errorFound=true;
+      this.SectionHomeQues1.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+       }    
     }
    
     if (this.selfAssessment.callsVirtualMeetings1Group == null && this.selfAssessment.computerWork1Group == null &&
@@ -510,6 +540,11 @@ export class SelfAssessmentComponent implements OnInit {
       this.validationPopupDisplay = true;
       this.question2Error = true;
       isFinalError = true;
+      if(!this.errorFound){
+      this.errorFound=true;
+      
+      this.SectionHomeQues2.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
     }
     if (this.selfAssessment.callsVirtualMeetings1Group == '' && this.selfAssessment.computerWork1Group == '' &&
       this.selfAssessment.paperWork1Group == '') {
@@ -517,6 +552,11 @@ export class SelfAssessmentComponent implements OnInit {
       this.validationPopupDisplay = true;
       this.question2Error = true;
       isFinalError = true;
+      if(!this.errorFound){
+      this.errorFound=true;
+      
+      this.SectionHomeQues2.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
     }
     if (this.selfAssessment.perchedForward == '' && this.selfAssessment.leaningForward == '' &&
       this.selfAssessment.slouching == '' && this.selfAssessment.sittingBack == '' && this.selfAssessment.offTheFloorRestingOnCasters == '') {
@@ -524,36 +564,67 @@ export class SelfAssessmentComponent implements OnInit {
       this.validationPopupDisplay = true;
       this.question3Error = true;
       isFinalError = true;
+      if(!this.errorFound){
+      this.errorFound=true;
+      
+      this.SectionHomeQues3.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     }
     if (this.selfAssessment.question4Options == '') {
       //alert("Please Fill1");
       this.validationPopupDisplay = true;
       this.question4Error = true;
       isFinalError = true;
+      if(!this.errorFound){
+      this.errorFound=true;
+      
+      this.SectionHomeQues4.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
     }
     if (this.selfAssessment.question5Options == '') {
       //alert("Please Fill1");
       this.validationPopupDisplay = true;
       this.question5Error = true;
       isFinalError = true;
+     if(!this.errorFound){
+      this.errorFound=true;
+      
+      this.SectionHomeQues5.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
     }
     if (this.selfAssessment.laptop1 && this.selfAssessment.question6Options == '') {
       //alert("Please Fill1");
       this.validationPopupDisplay = true;
       this.question6Error = true;
       isFinalError = true;
+      if(!this.errorFound){
+      this.errorFound=true;
+      
+      this.SectionHomeQues6.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
     }
     if (this.selfAssessment.computer1 && this.selfAssessment.question7Options == '') {
       //alert("Please Fill1");
       this.validationPopupDisplay = true;
       this.question7Error = true;
       isFinalError = true;
+     if(!this.errorFound){
+      this.errorFound=true;
+      
+      this.SectionHomeQues7.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+       }
     }
     if (this.selfAssessment.question8Options == '') {
       //alert("Please Fill1");
       this.validationPopupDisplay = true;
       this.question8Error = true;
       isFinalError = true;
+      if(!this.errorFound){
+      this.errorFound=true;
+      
+      this.SectionHomeQues8.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
     }
     if ((this.selfAssessment.sitting == '') && (this.selfAssessment.standing == '') &&
       (this.selfAssessment.stretching == '') && (this.selfAssessment.takingBreaks == '')) {
@@ -561,7 +632,12 @@ export class SelfAssessmentComponent implements OnInit {
       this.validationPopupDisplay = true;
       this.question9Error = true;
       isFinalError = true;
+      if(!this.errorFound){
+      this.errorFound=true;
+      
+      this.SectionHomeQues9.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
+          }
     }
     if ((this.selfAssessment.sittingGroup == '') && (this.selfAssessment.standingGroup == '') &&
       (this.selfAssessment.stretchingGroup == '') && (this.selfAssessment.takingBreaksGroup == '')) {
@@ -569,6 +645,11 @@ export class SelfAssessmentComponent implements OnInit {
       this.validationPopupDisplay = true;
       this.question9Error = true;
       isFinalError = true;
+      if(!this.errorFound){
+      this.errorFound=true;
+      
+      this.SectionHomeQues9.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
 
     }
 
@@ -843,9 +924,53 @@ export class SelfAssessmentComponent implements OnInit {
     alert(123);
   }
 
+chnageOnQuestions2(){
+  if(!this.selfAssessment.callsVirtualMeetings1){
+  this.selfAssessment.callsVirtualMeetings1Group='';
+  }
+
+  if(!this.selfAssessment.computerWork1){
+  this.selfAssessment.computerWork1Group='';
+  }
+
+  if(!this.selfAssessment.paperWork1){
+   this.selfAssessment.paperWork1Group='';
+  }
+}
+
+chnageOnQuestions9(){
+  if(!this.selfAssessment.sitting){
+   this.selfAssessment.sittingGroup='';
+  }
+  if(!this.selfAssessment.standing){
+   this.selfAssessment.standingGroup='';
+  }
+  if(!this.selfAssessment.stretching){
+   this.selfAssessment.stretchingGroup='';
+  }
+  if(!this.selfAssessment.takingBreaks){
+   this.selfAssessment.takingBreaksGroup='';
+  }
+}
 
   chnageOnQuestions1() {
 
+console.log("this.selfAssessment.laptop1",this.selfAssessment.laptop1);
+if(!this.selfAssessment.laptop1){
+  this.selfAssessment.laptop1Group='';
+}
+
+if(!this.selfAssessment.computer1){
+  this.selfAssessment.computer1Group='';
+}
+
+if(!this.selfAssessment.computer1){
+  this.selfAssessment.computer1Group='';
+}
+
+if(!this.selfAssessment.mobile1){
+  this.selfAssessment.mobile1Group='';
+}
 
     if ((this.selfAssessment.computer1 && this.selfAssessment.computer1Group != '') && (this.selfAssessment.laptop1 && this.selfAssessment.laptop1Group != '')) {
       this.questionNumberFor7 = 7;

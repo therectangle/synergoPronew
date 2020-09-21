@@ -28,7 +28,7 @@
 
 <form class="w-full" [formGroup]="selfAssessmentForm">
     <section class="w-full self-assessment-form" [style.display]="!isSubmittedForReport?'block':'none'">
-        <div class="w-full col-wrap" [class.error]="question1Error">
+        <div #sectionHomeQuestion1 class="w-full col-wrap" [class.error]="question1Error">
             <div class="inner-col">
                 <p style="font-size: 12px; display: block; text-align: left; margin-bottom: 20px;">
                     All questions are mandatory
@@ -145,7 +145,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-two-col" [class.error]="question2Error">
+        <div #sectionHomeQuestion2 class="w-full col-wrap question-two-col" [class.error]="question2Error">
             <div class="inner-col">
                 <div class="w-full question-text">
                     2. What work activities do you carry out at home and from where?
@@ -153,7 +153,7 @@
                 <div class="w-full answer-wrap">
                     <div class="option-col">
                         <div class="form-group">
-                            <input type="checkbox" id="machine-checkbox-v4" [(ngModel)]="selfAssessment.callsVirtualMeetings1" formControlName="callsVirtualMeetings1" name="callsVirtualMeetings1" />
+                            <input type="checkbox" id="machine-checkbox-v4" [(ngModel)]="selfAssessment.callsVirtualMeetings1" formControlName="callsVirtualMeetings1" name="callsVirtualMeetings1" (change)="chnageOnQuestions2()" />
                             <label for="machine-checkbox-v4" class="machine-text">
                                 <abbr class="icon-circle icon-calls"></abbr>
                                 <div for="machine-checkbox-v4" class="title-content-col">
@@ -176,7 +176,7 @@
 
                     <div class="option-col">
                         <div class="form-group">
-                            <input type="checkbox" id="machine-checkbox-v5" [(ngModel)]="selfAssessment.computerWork1" formControlName="computerWork1" name="computerWork1" />
+                            <input type="checkbox" id="machine-checkbox-v5" [(ngModel)]="selfAssessment.computerWork1" formControlName="computerWork1" name="computerWork1" (change)="chnageOnQuestions2()" />
                             <label for="machine-checkbox-v5" class="machine-text">
                                 <abbr class="icon-circle icon-computer-work"></abbr>
                                 <div class="title-content-col">
@@ -200,7 +200,7 @@
 
                     <div class="option-col">
                         <div class="form-group">
-                            <input type="checkbox" id="machine-checkbox-v6" formControlName="paperWork1" [(ngModel)]="selfAssessment.paperWork1" formControlName="paperWork1" name="paperWork1" />
+                            <input type="checkbox" id="machine-checkbox-v6" formControlName="paperWork1" [(ngModel)]="selfAssessment.paperWork1" formControlName="paperWork1" name="paperWork1" (change)="chnageOnQuestions2()" />
                             <label for="machine-checkbox-v6" class="machine-text">
                                 <abbr class="icon-circle icon-paper-work"></abbr>
                                 <div class="title-content-col">
@@ -225,7 +225,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-checkbox-btn" [class.error]="question3Error">
+        <div #sectionHomeQuestion3 class="w-full col-wrap question-checkbox-btn" [class.error]="question3Error">
             <div class="inner-col">
                 <div class="w-full question-text">
                     3. My sitting posture at a desk is
@@ -335,7 +335,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-radio-btn" [class.error]="question4Error">
+        <div #sectionHomeQuestion4 class="w-full col-wrap question-radio-btn" [class.error]="question4Error">
             <div class="inner-col">
                 <div class="w-full question-text">
                     4. When I am sitting on my chair, there is:
@@ -404,7 +404,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-radio-btn" [class.error]="question5Error">
+        <div #sectionHomeQuestion5 class="w-full col-wrap question-radio-btn" [class.error]="question5Error">
             <div class="inner-col">
                 <div class="w-full question-text">
                     5. When I work at my computer, my elbow angle is:
@@ -473,7 +473,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-radio-btn" [class.error]="question6Error" [style.display]="selfAssessment.laptop1!='' && selfAssessment.laptop1Group!=''?'block':'none'">
+        <div #sectionHomeQuestion6 class="w-full col-wrap question-radio-btn" [class.error]="question6Error" [style.display]="selfAssessment.laptop1!='' && selfAssessment.laptop1Group!=''?'block':'none'">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{questionNumberFor6}}. I work with my laptop:
@@ -542,7 +542,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-radio-btn" [class.error]="question7Error" [style.display]="selfAssessment.computer1!='' && selfAssessment.computer1Group!=''?'block':'none'">
+        <div #sectionHomeQuestion7 class="w-full col-wrap question-radio-btn" [class.error]="question7Error" [style.display]="selfAssessment.computer1!='' && selfAssessment.computer1Group!=''?'block':'none'">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{questionNumberFor7}}. My monitor height is:
@@ -611,7 +611,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-radio-btn question-nine-col" [class.error]="question8Error">
+        <div #sectionHomeQuestion8 class="w-full col-wrap question-radio-btn question-nine-col" [class.error]="question8Error">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{questionNumberFor8}}. Do you have glare issues?
@@ -660,7 +660,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap" [class.error]="question9Error">
+        <div #sectionHomeQuestion9 class="w-full col-wrap" [class.error]="question9Error">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{questionNumberFor9}}. How much of your work day is spent:
@@ -668,7 +668,7 @@
                 <div class="w-full answer-wrap">
                     <div class="option-col">
                         <div class="form-group">
-                            <input type="checkbox" id="machine-checkbox-v7" formControlName="sitting" [(ngModel)]="selfAssessment.sitting" name="sitting" />
+                            <input type="checkbox" id="machine-checkbox-v7" formControlName="sitting" [(ngModel)]="selfAssessment.sitting" name="sitting" (change)="chnageOnQuestions9()" />
                             <label for="machine-checkbox-v7" class="machine-text">
                                 <abbr class="icon-circle icon-sitting"></abbr>
                                 <span>Sitting</span>
@@ -703,7 +703,7 @@
 
                     <div class="option-col">
                         <div class="form-group">
-                            <input type="checkbox" id="machine-checkbox-v8" formControlName="standing" [(ngModel)]="selfAssessment.standing" name="standing" />
+                            <input type="checkbox" id="machine-checkbox-v8" formControlName="standing" [(ngModel)]="selfAssessment.standing" name="standing" (change)="chnageOnQuestions9()" />
                             <label for="machine-checkbox-v8" class="machine-text">
                                 <abbr class="icon-circle icon-standing"></abbr>
                                 <span>Standing</span>
@@ -737,7 +737,7 @@
 
                     <div class="option-col">
                         <div class="form-group">
-                            <input type="checkbox" id="machine-checkbox-v9" formControlName="stretching" [(ngModel)]="selfAssessment.stretching" name="stretching" />
+                            <input type="checkbox" id="machine-checkbox-v9" formControlName="stretching" [(ngModel)]="selfAssessment.stretching" name="stretching" (change)="chnageOnQuestions9()" />
                             <label for="machine-checkbox-v9" class="machine-text">
                                 <abbr class="icon-circle icon-stretching"></abbr>
                                 <span>Stretching</span>
@@ -764,7 +764,7 @@
 
                     <div class="option-col">
                         <div class="form-group">
-                            <input type="checkbox" id="machine-checkbox-v10" formControlName="takingBreaks" [(ngModel)]="selfAssessment.takingBreaks" name="takingBreaks" />
+                            <input type="checkbox" id="machine-checkbox-v10" formControlName="takingBreaks" [(ngModel)]="selfAssessment.takingBreaks" name="takingBreaks" (change)="chnageOnQuestions9()" />
                             <label for="machine-checkbox-v10" class="machine-text">
                                 <abbr class="icon-circle icon-taking-breaks"></abbr>
                                 <span>Taking Breaks</span>

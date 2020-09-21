@@ -18,7 +18,7 @@
 
 <form class="w-full" [formGroup]="selfAssessmentForm">
     <section class="w-full all-questions self-assessment-form self-assessment-office-form" [style.display]="!isSubmittedForReport?'block':'none'">
-        <div class="w-full col-wrap p-self-ergo question-rows" [class.error]="(isFinalError && !question1ValidationSuccess)">
+        <div  #sectionQuestion1 class="w-full col-wrap p-self-ergo question-rows" [class.error]="(isFinalError && !question1ValidationSuccess)">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{selfAssessment.question1}}
@@ -97,14 +97,14 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-rows question-devices-col What-do-you-1" [class.error]="(isFinalError && !question2ValidationSuccess)">
+        <div #sectionQuestion2 class="w-full col-wrap question-rows question-devices-col What-do-you-1" [class.error]="(isFinalError && !question2ValidationSuccess)">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{selfAssessment.question2}}
                 </div>
                 <div class="w-full answer-wrap" formArrayName="question2OptionsArray">
                     <!--Strat-->
-
+                   
                     <div class="option-col" *ngFor="let arrayItem of question2OptionsArrayFormGroup.controls; let i=index">
                         <div class="form-group" [formGroupName]="i">
                             <input type="checkbox" id="{{arrayItem.value.value}}{{i}}" formControlName="selected" name="selected" [value]="value" (change)="changeQuestion2OptionsArrayFormGroup(i,$event)" />
@@ -130,7 +130,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-rows question-two-col work-environment" [class.error]="(isFinalError && !question3ValidationSuccess)">
+        <div #sectionQuestion3 class="w-full col-wrap question-rows question-two-col work-environment" [class.error]="(isFinalError && !question3ValidationSuccess)">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{selfAssessment.question3}}
@@ -138,7 +138,7 @@
                 <div class="w-full answer-wrap" formArrayName="question3OptionsArray">
                     <div class="option-col" *ngFor="let arrayItem of question3OptionsArrayFormGroup.controls; let i=index">
                         <div class="form-group" [formGroupName]="i">
-                            <input type="checkbox" id="{{arrayItem.value.value}}{{i}}" name="{{arrayItem.value.name}}" (change)="changeQuestion3OptionsArrayFormGroup(i,$event)" />
+                            <input #question3 type="checkbox" id="{{arrayItem.value.value}}{{i}}" name="{{arrayItem.value.name}}" (change)="changeQuestion3OptionsArrayFormGroup(i,$event)" />
                             <label for="{{arrayItem.value.value}}{{i}}" class="machine-text">
                                 <abbr class="icon-circle {{arrayItem.value.abbrClass}}"></abbr>
                                 <div class="title-content-col">
@@ -162,7 +162,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-rows question-radio-btn" [class.error]="(isFinalError && !question4ValidationSuccess)">
+        <div #sectionQuestion4 class="w-full col-wrap question-rows question-radio-btn" [class.error]="(isFinalError && !question4ValidationSuccess)">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{selfAssessment.question4}}
@@ -190,10 +190,11 @@
                 </div>
             </div>
         </div>
+       <div>
+        <div #sectionQuestion5  class="w-full question-rows col-wrap question-radio-btn type-of-desk" [class.error]="(isFinalError && !question5ValidationSuccess)">
+            <div class="inner-col" >
 
-        <div class="w-full question-rows col-wrap question-radio-btn type-of-desk" [class.error]="(isFinalError && !question5ValidationSuccess)">
-            <div class="inner-col">
-                <div class="w-full question-text">
+                <div class="w-full question-text" >
                     {{selfAssessment.question5}}
                 </div>
                 <div class="w-full answer-wrap" formArrayName="question5OptionsArray">
@@ -225,10 +226,11 @@
                 </div>
             </div>
         </div>
-
-        <div class="w-full col-wrap question-rows question-radio-btn" [class.error]="(isFinalError && !question6ValidationSuccess)">
+    </div>
+<div style="clear: both;"></div>
+        <div #sectionQuestion6 class="w-full col-wrap question-rows question-radio-btn" [class.error]="(isFinalError && !question6ValidationSuccess)">
             <div class="inner-col">
-                <div class="w-full question-text">
+                <div class="w-full question-text" >
                     {{selfAssessment.question6}}
                 </div>
                 <div class="w-full answer-wrap" formArrayName="question6OptionsArray">
@@ -255,9 +257,9 @@
             </div>
         </div>
 
-        <div class="w-full question-rows col-wrap question-radio-btn question-fifth-col" [class.error]="(isFinalError && !question7ValidationSuccess)">
+        <div #sectionQuestion7 class="w-full question-rows col-wrap question-radio-btn question-fifth-col" [class.error]="(isFinalError && !question7ValidationSuccess)">
             <div class="inner-col">
-                <div class="w-full question-text">
+                <div class="w-full question-text" >
                     {{selfAssessment.question7}}
                 </div>
                 <div class="w-full answer-wrap" formArrayName="question7OptionsArray">
@@ -284,7 +286,7 @@
             </div>
         </div>
 
-        <div class="w-full question-rows col-wrap question-radio-btn" [class.error]="(isFinalError && !question8ValidationSuccess)">
+        <div #sectionQuestion8 class="w-full question-rows col-wrap question-radio-btn" [class.error]="(isFinalError && !question8ValidationSuccess)">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{selfAssessment.question8}}
@@ -313,7 +315,7 @@
             </div>
         </div>
 
-        <div class="w-full question-rows col-wrap question-radio-btn question-fifth-col" *ngIf="question9ToDisplay" [class.error]="(isFinalError && !question9ValidationSuccess)">
+        <div #sectionQuestion9 class="w-full question-rows col-wrap question-radio-btn question-fifth-col" *ngIf="question9ToDisplay" [class.error]="(isFinalError && !question9ValidationSuccess)">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{selfAssessment.question9}}
@@ -342,7 +344,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-rows question-radio-btn question-nine-col" *ngIf="question10ToDisplay" [class.error]="(isFinalError && !question10ValidationSuccess)">
+        <div #sectionQuestion10 class="w-full col-wrap question-rows question-radio-btn question-nine-col" *ngIf="question10ToDisplay" [class.error]="(isFinalError && !question10ValidationSuccess)">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{selfAssessment.question10}}
@@ -371,7 +373,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-rows question-radio-btn question-nine-col" *ngIf="question11ToDisplay" [class.error]="(isFinalError && !question11ValidationSuccess)">
+        <div #sectionQuestion11 class="w-full col-wrap question-rows question-radio-btn question-nine-col" *ngIf="question11ToDisplay" [class.error]="(isFinalError && !question11ValidationSuccess)">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{selfAssessment.question11}}
@@ -399,7 +401,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full col-wrap question-radio-btn question-nine-col" *ngIf="question12ToDisplay" [class.error]="(isFinalError && !question12ValidationSuccess)">
+        <div #sectionQuestion12 class="w-full col-wrap question-radio-btn question-nine-col" *ngIf="question12ToDisplay" [class.error]="(isFinalError && !question12ValidationSuccess)">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{selfAssessment.question12}}
@@ -428,7 +430,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-radio-btn question-nine-col" [class.error]="(isFinalError && !question13ValidationSuccess)">
+        <div #sectionQuestion13 class="w-full col-wrap question-radio-btn question-nine-col" [class.error]="(isFinalError && !question13ValidationSuccess)">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{selfAssessment.question13}}
@@ -457,7 +459,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-radio-btn question-nine-col" [class.error]="(isFinalError && !question14ValidationSuccess)">
+        <div #sectionQuestion14 class="w-full col-wrap question-radio-btn question-nine-col" [class.error]="(isFinalError && !question14ValidationSuccess)">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{selfAssessment.question14}}
@@ -486,7 +488,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap question-radio-btn question-nine-col" [class.error]="(isFinalError && !question15ValidationSuccess)">
+        <div #sectionQuestion15 class="w-full col-wrap question-radio-btn question-nine-col" [class.error]="(isFinalError && !question15ValidationSuccess)">
             <div class="inner-col">
                 <div class="w-full question-text">
                     {{selfAssessment.question15}}
@@ -515,66 +517,7 @@
             </div>
         </div>
 
-        <div class="w-full col-wrap" [class.error]="(isFinalError && !question16ValidationSuccess && !question16OptionsValidationSuccess)">
-            <div class="inner-col">
-                <div class="w-full question-text">
-                    {{selfAssessment.question16}}
-                </div>
-                <div class="w-full answer-wrap" formArrayName="question16OptionsArray">
-                    <!--Strat-->
-
-                    <div class="option-col" *ngFor="let arrayItem of question16OptionsArrayFormGroup.controls; let i=index">
-                        <div class="form-group" [formGroupName]="i">
-                            <input type="checkbox" id="{{arrayItem.value.value}}{{i}}" name="{{arrayItem.value.name}}" (change)="changeQuestion16OptionsArrayFormGroup(i,$event)" />
-                            <label for="{{arrayItem.value.value}}{{i}}" class="machine-text">
-                                <abbr class="icon-circle {{arrayItem.value.abbrClass}}"></abbr>
-                                <span>{{arrayItem.value.value}}</span>
-                            </label>
-                        </div>
-                        <div class="machine-option-text" [class.active]="getQuestion16OptionsArrayFormGroup(i).value.selected">
-                            <ul>
-                                <li>
-                                    <p>
-                                        <input
-                                            type="radio"
-                                            id="{{arrayItem.value.optionsValues[0].name}}"
-                                            name="{{arrayItem.value.name}}{{i}}"
-                                            (change)="changeQuestion16OptionsArrayOptionsArrayFormGroup(i,0,arrayItem.value.optionsValues[0].name)"
-                                        />
-                                        <label for="{{arrayItem.value.optionsValues[0].name}}">{{arrayItem.value.optionsValues[0].value}}</label>
-                                    </p>
-                                </li>
-
-                                <li>
-                                    <p>
-                                        <input
-                                            type="radio"
-                                            id="{{arrayItem.value.optionsValues[1].name}}"
-                                            name="{{arrayItem.value.name}}{{i}}"
-                                            (change)="changeQuestion16OptionsArrayOptionsArrayFormGroup(i,1,arrayItem.value.optionsValues[1].name)"
-                                        />
-                                        <label for="{{arrayItem.value.optionsValues[1].name}}">{{arrayItem.value.optionsValues[1].value}}</label>
-                                    </p>
-                                </li>
-
-                                <li *ngIf="i!=2 && i!=3">
-                                    <p>
-                                        <input
-                                            type="radio"
-                                            id="{{arrayItem.value.optionsValues[2].name}}"
-                                            name="{{arrayItem.value.name}}{{i}}"
-                                            (change)="changeQuestion16OptionsArrayOptionsArrayFormGroup(i,2,arrayItem.value.optionsValues[2].name)"
-                                        />
-                                        <label for="{{arrayItem.value.optionsValues[2].name}}">{{arrayItem.value.optionsValues[2].value}}</label>
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!--End-->
-                </div>
-            </div>
+        <div #sectionQuestion16 class="w-full col-wrap" [class.error]="(isFinalError && !question16ValidationSuccess && !question16OptionsValidationSuccess)">
         </div>
 
         <div class="w-full col-wrap both-btns">
